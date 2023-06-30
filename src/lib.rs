@@ -38,3 +38,22 @@ impl<T> WithLock<T> for Weak<Mutex<T>> {
         }
     }
 }
+
+pub trait ArcMutexClone<T: Clone> {
+    fn get_clone(&self) -> T;
+    fn try_get_clone(&self) -> Option<T>;
+}
+
+impl<T: Clone> ArcMutexClone<T> for Arc<Mutex<T>> {
+    fn get_clone(&self) -> T {
+        let lock = self.lock().expect("Could not lock mutex");
+        lock.clone()
+    }
+
+    fn try_get_clone(&self) -> Option<T> {
+        match self.try_lock() {
+            Ok(lock) => Some(lock.clone()),
+            Err(_) => None
+        }
+    }
+}
