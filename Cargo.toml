@@ -1,0 +1,15 @@
+[package]
+name = "with_lock"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+keywords = ["arc", "mutex"]
+categories = ["development-tools"]
+description = "A simple tool to easily and safely access arc-mutexes without"
+homepage = "https://github.com/vaqxai/rust_with_lock"
+repository = "https://github.com/vaqxai/rust_with_lock"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
